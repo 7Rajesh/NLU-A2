@@ -558,6 +558,15 @@ print("="*50)
 
 rnn = VanillaRNN(vocab_size, EMBED, HIDDEN, LAYERS)
 print(f"Parameters: {rnn.num_params():,}")
+# Report parameters
+num_params = rnn.num_params()
+print(f"Parameters: {num_params:,}")
+
+# Calculate and report model size in MB
+# Each parameter is a 32-bit float = 4 bytes
+model_size_bytes = num_params * 4
+model_size_mb = model_size_bytes / (1024 * 1024)
+print(f"Model Size: {model_size_mb:.4f} MB ({model_size_bytes:,} bytes)")
 
 #Load existing model or train new one
 if not load(rnn, "models2/rnn.pt"):
