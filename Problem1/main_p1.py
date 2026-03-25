@@ -92,7 +92,7 @@ def process_pdf_directory(directory_path):
     return " ".join(combined_content)
 
 def merge_corpus_files(output_filename="full_corpus.txt"):
-    corpus_dir = "cleaned_corpus"
+    corpus_dir = "Data"
     merge_order = ["AcadReg.txt", "FacProfile.txt", "CurrNSyllabus.txt"]
 
     merged_content = []
@@ -938,7 +938,7 @@ if __name__ == "__main__":
     ############ Step 1: Data Preparation ############
 
     print("\n1:- Loading corpus...")
-    tokens = load_corpus("cleaned_corpus/full_corpus.txt")
+    tokens = load_corpus("Data/full_corpus.txt")
     if not tokens:
         exit(1)
 
