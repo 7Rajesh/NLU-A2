@@ -173,7 +173,7 @@ def save_text_content(text, output_filepath):
 
 #Ensuring cleaned corpus exists by processing source data
 def prepare_corpus_files():
-    corpus_dir = 'cleaned_corpus'
+    corpus_dir = 'Data'
     source_dir = 'data'
 
     required_files = ['AcadReg.txt', 'FacProfile.txt', 'CurrNSyllabus.txt']
@@ -343,6 +343,11 @@ def main():
 
     #Analyze corpus
     corpus_stats = calculate_text_statistics(corpus)
+    calculate_text_statistics
+    top_10 = corpus_stats['word_counts'].most_common(10)
+    print("Print Top 10 most frequent Words with there Frequency\n")
+    print(top_10)
+    print("\n")
 
     print("\n4:-Corpus Statistics:")
     print("-" * 40)
@@ -942,6 +947,7 @@ if __name__ == "__main__":
     if not tokens:
         exit(1)
 
+    
     #Build vocabulary
     word_to_idx, idx_to_word, vocab_size = build_vocab(tokens, min_freq=2)
 
@@ -1375,3 +1381,33 @@ plt.tight_layout()
 plt.savefig("viz_comparison_tsne.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("  Saved: viz_comparison_tsne.png")
+
+
+# Print embedding vector for a chosen word
+chosen_word = "research"  # change to any word in your vocabulary
+
+if chosen_word in word_to_idx:
+    vec = final_cbow.input_embeds.weight[word_to_idx[chosen_word]].detach().cpu().numpy()
+    vec_str = ", ".join(f"{v:.4f}" for v in vec)
+    print(f"\n{chosen_word} - {vec_str}")
+else:
+    print(f"'{chosen_word}' not in vocabulary")
+
+# Use best params but force dim=300
+final_cbow_300 = CBOWModel(vocab_size, 300)
+
+final_cbow_300 = train_or_reuse(
+    CBOWModel,
+    "final_cbow_300",
+    vocab_size,
+    300,                    # changed
+    best_cbow_window,       # same
+    cbow_train,
+    negative_dist,
+    epochs=10,
+    neg_samples=best_cbow_neg
+)
+chosen_word = "research"
+
+vec = final_cbow_300.input_embeds.weight[word_to_idx[chosen_word]].detach().cpu().numpy()
+print(f"{chosen_word} - " + ", ".join(f"{v:.4f}" for v in vec))
