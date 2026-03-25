@@ -308,8 +308,8 @@ def analyze_document_section(file_path):
 #Main function
 def main():
 
-    corpus_file = "cleaned_corpus/full_corpus.txt"
-    corpus_dir = "cleaned_corpus"
+    corpus_file = "Data/full_corpus.txt"
+    corpus_dir = "Data"
 
     #Step 1: Check if full corpus already exists
     if not os.path.exists(corpus_file):
