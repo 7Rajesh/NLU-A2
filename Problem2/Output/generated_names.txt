@@ -1,0 +1,37 @@
+Model: Vanilla RNN
+    1. lswar
+    2. sawita
+    3. manaya
+    4. ojina
+    5. amor
+    6. sandey
+    7. evrush
+    8. vakshwa
+    9. gurni
+    10. lukin
+
+Model: BiLSTM
+    1. rdarararararara
+    2. errrurrurrra
+    3. bbohdp
+    4. nfi
+    5. orrprur
+    6. tedpgl
+    7. <empty>
+    8. shahasashsh
+    9. <empty>
+    10. dwoe
+
+Model: RNN+Attention
+    1. cusswashn
+    2. sswusshsuswassh
+    3. gwso
+    4. ffgzgwwojwoj
+    5. kshusvush
+    6. ufmuzulya
+    7. geeeel
+    8. bbbbibxobwb
+    9. goco
+    10. zushushush
+
+
