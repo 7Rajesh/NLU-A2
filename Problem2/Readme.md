@@ -17,7 +17,7 @@ Models are evaluated on **novelty rate** (names not seen in training) and **dive
    pip install torch numpy pandas
    ```
 
-2. **Add dataset** — place `names.txt` (one name per line) in the same directory as `q2.py`
+2. **Add dataset** — place `names.txt` (one name per line) in the directory  `Data`
 
 3. **Run**
    ```bash
