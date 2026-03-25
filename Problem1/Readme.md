@@ -8,7 +8,7 @@ Trains and compares two Word2Vec models — CBOW and Skip-gram — on text scrap
 
 1. **Install dependencies**
    ```bash
-   pip install torch numpy pandas matplotlib scikit-learn wordcloud requests beautifulsoup4
+   pip install torch numpy matplotlib nltk scikit-learn wordcloud requests PyPDF2
    ```
 
 2. **Add corpus** — place `corpus.txt` (cleaned IIT Jodhpur text) in the `Data/` folder, or run the scraper to generate it automatically
