@@ -91,7 +91,7 @@ def process_pdf_directory(directory_path):
     print(f"Processed {pdf_files_found} PDF files")
     return " ".join(combined_content)
 
-def merge_corpus_files(output_filename="full_corpus.txt"):
+def merge_corpus_files(output_filename="corpus.txt"):
     corpus_dir = "Data"
     merge_order = ["AcadReg.txt", "FacProfile.txt", "CurrNSyllabus.txt"]
 
@@ -308,12 +308,12 @@ def analyze_document_section(file_path):
 #Main function
 def main():
 
-    corpus_file = "Data/full_corpus.txt"
+    corpus_file = "Data/corpus.txt"
     corpus_dir = "Data"
 
     #Step 1: Check if full corpus already exists
     if not os.path.exists(corpus_file):
-        print("1:- full_corpus.txt not found. Preparing document corpus...")
+        print("1:- corpus.txt not found. Preparing document corpus...")
 
         if not prepare_corpus_files():
             print("Failed to prepare corpus. Exiting.")
@@ -324,13 +324,13 @@ def main():
             print("Merging failed. Exiting.")
             return
 
-        full_corpus = full_merged_text
+        corpus = full_merged_text
 
     else:
-        print("1:- full_corpus.txt already exists. Loading and skipping preparation...")
+        print("1:- corpus.txt already exists. Loading and skipping preparation...")
 
         with open(corpus_file, "r", encoding="utf-8") as f:
-            full_corpus = f.read()
+            corpus = f.read()
 
     #Step 2 & 3 ONLY if needed for per-file analysis
     text_files = []
@@ -338,11 +338,11 @@ def main():
         text_files = [
             os.path.join(corpus_dir, f)
             for f in os.listdir(corpus_dir)
-            if f.endswith('.txt') and f != "full_corpus.txt"
+            if f.endswith('.txt') and f != "corpus.txt"
         ]
 
     #Analyze corpus
-    corpus_stats = calculate_text_statistics(full_corpus)
+    corpus_stats = calculate_text_statistics(corpus)
 
     print("\n4:-Corpus Statistics:")
     print("-" * 40)
@@ -938,7 +938,7 @@ if __name__ == "__main__":
     ############ Step 1: Data Preparation ############
 
     print("\n1:- Loading corpus...")
-    tokens = load_corpus("Data/full_corpus.txt")
+    tokens = load_corpus("Data/corpus.txt")
     if not tokens:
         exit(1)
 
