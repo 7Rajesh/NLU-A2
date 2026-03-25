@@ -1,3 +1,11 @@
 torch
 numpy
+matplotlib
+nltk
+scikit-learn
+wordcloud
+requests
+PyPDF2
+ torch
+numpy
 pandas
